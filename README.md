@@ -11,8 +11,9 @@ Outdated drivers could cause issues with OpenGL that might be difficult to troub
 ### Clone This Project
 1. Go to the main screen of this repository and click the green "Code" button
 2. Then click "Open in Visual Studio"
+3. In Visual Studio Team Explorer should show up and give the option click 'Clone' with a checkbox for 'recursively'.  Make sure that checkbox is checked and click 'Clone'
 3. Save the project
-4. Open up the project in your file explorer.  You should see the file 'OpenGL.sln'
+4. Open up the project in your file explorer.  You should see the file 'OpenGL.sln' in the current directory
 5. Create a folder in this directory called 'Dependencies'
 6. Go into the 'Dependencies' folder and create another folder called 'GLFW'
 
