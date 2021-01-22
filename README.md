@@ -8,7 +8,7 @@
 ### Make sure your GPU drivers are up to date
 Outdated drivers could cause issues with OpenGL that might be difficult to troubleshoot
 
-#### Clone This Project
+### Clone This Project
 1. Go to the main screen of this repository and click the green "Code" button
 2. Then click "Open in Visual Studio"
 3. Save the project
