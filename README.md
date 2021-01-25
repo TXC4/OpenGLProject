@@ -61,6 +61,7 @@ Where it says Additional Library Directories, click the drop-down button and the
 3. In the Configuration Properties navigate to 'Linker' > 'Input'
 4. In the top text field add 'glfw3.lib', press 'Return' on your keyboard
 5. Then also add 'opengl32.lib', press 'Return' on your keyboard and then click 'OK'
+6. Click 'apply', then click 'OK'
 
 # You're all done!
 When you run your program (be sure solution platform is x86), you should have a command line as well as an empty window pop up.  This window will be used to draw our graphics!
