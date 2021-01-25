@@ -3,6 +3,8 @@
 ## Description
 * This project uses the GLFW library to implement OpenGL.  GLFW makes creating a window for our scene simple by handling the Windows API for us.
 * These instructions assume that you already have Visual Studio downloaded.  If you are unfamiliar with dependencies and linking libraries, then I highly recommend using Visual Studio in order to follow along.*
+* If you have any issues cloning the project, then go into the OpenGLProject folder and into Application.cpp.  Just copy and pasted that code into an existing project and you will have the same outcome.*
+* For a more detailed explanation, watch this video: https://www.youtube.com/watch?v=OR4fNpBjmq8&t=934s *
 
 ## Getting Started
 ### Make sure your GPU drivers are up to date
