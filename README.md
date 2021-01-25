@@ -45,7 +45,7 @@ OpenGL is usually already installed by your operating system so all we really ne
 3. At the top, change the configuration to 'All Configurations'
 4. In the Configuration Properties on the side navigate to 'C/C++' > 'General'
 5. Where it says Additional Include Directories, click the drop-down button and then click edit
-6. In the top text field add '$(Solution)Dependencies\GLFW\include' then click 'OK'
+6. In the top text field add '$(SolutionDir)Dependencies\GLFW\include' (without the quotes) then click 'OK'
   This gives our project a path to our 'Dependencies' folder
 
 #### Libraries
@@ -55,14 +55,14 @@ OpenGL is usually already installed by your operating system so all we really ne
 
 1. In the Configuration Properties navigate to 'Linker' > 'General'
 Where it says Additional Library Directories, click the drop-down button and then click edit
-2. In the top text field add '$(Solution)Dependencies\GLFW\lib-vc2019' then click 'OK'
+2. In the top text field add '$(SolutionDir)Dependencies\GLFW\lib-vc2019' then click 'OK'
 3. In the Configuration Properties navigate to 'Linker' > 'Input'
 4. In the top text field add 'glfw3.lib', press 'Return' on your keyboard
 5. Then also add 'opengl32.lib', press 'Return' on your keyboard and then click 'OK'
 
 # You're all done!
-When you run your program, you should have a command line as well as an empty window pop up.  This window will be used to draw our graphics!
+When you run your program (be sure solution platform is x86), you should have a command line as well as an empty window pop up.  This window will be used to draw our graphics!
 
-If you'd like to dig deeper into C++, OpenGL, linking libraries and dependencies, or game engine development then I highly recommed this YouTube channel
+If you'd like to dig deeper into C++, OpenGL, linking libraries and dependencies, or game engine development then I highly recommed this YouTube channel.
 https://www.youtube.com/watch?v=W3gAzLwfIP0&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2
 
