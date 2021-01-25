@@ -10,7 +10,7 @@ Outdated drivers could cause issues with OpenGL that might be difficult to troub
 
 ### Clone This Project
 1. Go to the main screen of this repository and click the green "Code" button
-2. Then click "Open in Visual Studio"
+2. Then click "Open with Visual Studio"
 ###### If you do not have the option to "Open in Visual Studio", you might not have a source control extension installed to Visual Studio.
 ###### If this is the case just use one of the other options of cloning and open your project in Visual Studio. Then skip step 3.
 3. In Visual Studio Team Explorer should show up and give the option click 'Clone' with a checkbox for 'recursively'.  Make sure that checkbox is checked and click 'Clone'
