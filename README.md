@@ -36,13 +36,6 @@ OpenGL is usually already installed by your operating system so all we really ne
 2. Then, while still in your file explorer, navigate back to the OpenGL project.  Go into 'Dependencies' and then into the 'GLFW' folder that we created.
 3. Paste the 'include' and 'lib-vc2019' folders that we copied
 
-
-## You should be done at this point
-When you run your program you should see both a terminal and an empty window.
-If you would like to create your own project from scratch, follow the above instructions without cloning this project and continue through the following instructions.
-Learning to handle paths, dependencies, and libraries will be useful if we decide to add more utility libraries later on.
-
-
 #### Dependencies
 
 ###### Here we tell our project where we placed our 'include' dependencies by giving it a path to follow
