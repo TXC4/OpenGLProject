@@ -5,9 +5,9 @@
 
 #include <iostream>
 
-int numOfVertices = 10;
+int numOfVertices = 3;
 float angle = 0.0;
-float xPos = 0, yPos = 0, radius = 1.0f;
+float xPos = 0, yPos = 0, radius = 0.1f;
 float prevX = xPos;
 float prevY = yPos - radius;
 
@@ -17,9 +17,22 @@ float vertices[9]{
         0.2f, 0.2f, 0.0f
 };
 
-void translateVertices()
+/* 2D Transform Matrix */
+float transformMatrix[9] = {
+    1.0f, 0.0f, 0.0f,
+    0.0f, 1.0f, 0.0f,
+    0.0f, 0.0f, 1.0f
+};
+
+void translateVertices(float distanceX, float distanceY)
 {
-    
+    vertices[0] = vertices[0] + distanceX;
+    vertices[3] = vertices[3] + distanceX;
+    vertices[6] = vertices[6] + distanceX;
+
+    vertices[1] = vertices[1] + distanceY;
+    vertices[4] = vertices[4] + distanceY;
+    vertices[7] = vertices[7] + distanceY;
 }
 
 int main(void)
@@ -58,12 +71,7 @@ int main(void)
     //glBindBuffer(GL_ARRAY_BUFFER, buffer);
     //glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), triangleVertexPositions, GL_STATIC_DRAW); //buffer size in bytes
 
-    /* 2D Transform Matrix */
-    float transformMatrix[9] = {
-        1.0f, 0.0f, 0.0f,
-        0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 1.0f
-    };
+    
 
 
     /* define attributes */
@@ -105,7 +113,7 @@ int main(void)
             vertices[7] = newY;
             vertices[8] = 0.0f;
 
-            translateVertices();
+            translateVertices(-0.5, 0.5);
 
             glBegin(GL_TRIANGLES);
             glVertex3f(vertices[0], vertices[1], vertices[2]);
