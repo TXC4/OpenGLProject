@@ -12,7 +12,8 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(1020, 768, "Fogle", NULL, NULL);
+    
     if (!window)
     {
         glfwTerminate();
@@ -25,6 +26,8 @@ int main(void)
     /* glewInit cannot be called before glfw context created */
     if (glewInit() != GLEW_OK)
         std::cout << "Error!" << std::endl;
+
+    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 
     /* get opengl version */
     std::cout << glGetString(GL_VERSION) << std::endl;
@@ -59,6 +62,7 @@ int main(void)
 
         /* no index buffer defined so glDrawArrays defines index start and count */
         /* draws bounded buffer last called by glBindBuffer() */
+        glColor3f(0, 1, 0);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
         /* used if we have index buffer*/
