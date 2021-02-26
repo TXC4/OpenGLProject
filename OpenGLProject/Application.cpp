@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-int numOfVertices = 3;
+int numOfVertices = 10;
 float angle = 0.0;
 float xPos = 0, yPos = 0, radius = 0.1f;
 float prevX = xPos;
@@ -71,8 +71,7 @@ int main(void)
     //glBindBuffer(GL_ARRAY_BUFFER, buffer);
     //glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), triangleVertexPositions, GL_STATIC_DRAW); //buffer size in bytes
 
-    
-
+    glLineWidth(3.0f);
 
     /* define attributes */
     glEnableVertexAttribArray(0);
@@ -115,6 +114,22 @@ int main(void)
 
             translateVertices(-0.5, 0.5);
 
+            /*glColor3f(0, 1, 0);
+            glBegin(GL_LINES);
+            glVertex3f(vertices[0], vertices[1], vertices[2]);
+            glVertex3f(vertices[3], vertices[4], vertices[5]);
+            glVertex3f(vertices[6], vertices[7], vertices[8]);
+            glEnd();*/
+
+            glColor3f(0, 0, 1);
+            //Draw outline
+            glBegin(GL_LINES);
+            glVertex3f(vertices[3], vertices[4], vertices[5]);
+            glVertex3f(vertices[6], vertices[7], vertices[8]);
+            glEnd();
+
+            glColor3f(1, 0, 0);
+            //Draw filled polygon
             glBegin(GL_TRIANGLES);
             glVertex3f(vertices[0], vertices[1], vertices[2]);
             glVertex3f(vertices[3], vertices[4], vertices[5]);
