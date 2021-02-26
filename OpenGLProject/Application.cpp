@@ -2,26 +2,33 @@
 #include <GLFW/glfw3.h>
 #define _USE_MATH_DEFINES
 #include <math.h>
-
+#include <string>
 #include <iostream>
+
+void drawPolygon(int, float, float, float, float, std::string, float[3]);
 
 int numOfVertices = 10;
 float angle = 0.0;
-float xPos = 0, yPos = 0, radius = 0.1f;
+float xPos = 0, yPos = 0, radius = 0.08f;
 float prevX = xPos;
 float prevY = yPos - radius;
+
+float red[3] = { 1,0,0 };
+float green[3] = { 0,1,0 };
+float blue[3] = { 0,0,1 };
+float yellow[3] = { 1, 1, 0 };
+float purple[3] = { 1, 0, 1 };
+float cyan[3] = { 0,1,1 };
+float white[3] = { 1,1,1 };
+float orange[3] = { 1,0.5,0 };
+float greenYellow[3] = { 0.5, 1, 0 };
+float lightGreen[3] = { 0.5,1,0.5 };
+float darkGreen[3] = { 0,0.5,0 };
 
 float vertices[9]{
         0.0f, 0.0f, 0.0f,
        -0.5f, -0.5f, 0.0f,
         0.2f, 0.2f, 0.0f
-};
-
-/* 2D Transform Matrix */
-float transformMatrix[9] = {
-    1.0f, 0.0f, 0.0f,
-    0.0f, 1.0f, 0.0f,
-    0.0f, 0.0f, 1.0f
 };
 
 void translateVertices(float distanceX, float distanceY)
@@ -45,6 +52,7 @@ int main(void)
 
     /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(1024, 768, "Fogle", NULL, NULL);
+
     
     if (!window)
     {
@@ -65,7 +73,7 @@ int main(void)
     std::cout << glGetString(GL_VERSION) << std::endl;
 
 
-    /* generate and bind buffer */
+    /* generate and bind buffer for glDrawArrays or glDrawElement*/
     //unsigned int buffer;
     //glGenBuffers(1, &buffer);
     //glBindBuffer(GL_ARRAY_BUFFER, buffer);
@@ -76,6 +84,8 @@ int main(void)
     /* define attributes */
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
+
+    
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
@@ -89,62 +99,30 @@ int main(void)
         
         float prevX = xPos;
         float prevY = yPos - radius;
-        
-        for (int i = 0; i <= numOfVertices; i++) {
-            angle = M_PI * 2.0f / numOfVertices;
 
-            float newX = radius * sin(angle * i);
-            float newY = -radius * cos(angle * i);
+        drawPolygon(5, -0.8, 0.8, prevX, prevY, "fill", red);
+        drawPolygon(5, -0.6, 0.8, prevX, prevY, "outline", blue);
 
-            /*glBegin(GL_TRIANGLES);
-            glVertex3f(0.0f, 0.0f, 0.0f);
-            glVertex3f(prevX, prevY, 0.0f);
-            glVertex3f(newX, newY, 0.0f);
-            glEnd();*/
+        drawPolygon(5, -0.1, 0.8, prevX, prevY, "fill", green);
+        drawPolygon(5, 0.1, 0.8, prevX, prevY, "outline", yellow);
 
-            vertices[0] = 0.0f;
-            vertices[1] = 0.0f;
-            vertices[2] = 0.0f;
-            vertices[3] = prevX;
-            vertices[4] = prevY;
-            vertices[5] = 0.0f;
-            vertices[6] = newX;
-            vertices[7] = newY;
-            vertices[8] = 0.0f;
+        drawPolygon(5, 0.6, 0.8, prevX, prevY, "fill", cyan);
+        drawPolygon(5, 0.8, 0.8, prevX, prevY, "outline", orange);
 
-            translateVertices(-0.5, 0.5);
+        drawPolygon(5, -0.8, 0.0, prevX, prevY, "fill", purple);
+        drawPolygon(5, -0.6, 0.0, prevX, prevY, "outline", greenYellow);
 
-            /*glColor3f(0, 1, 0);
-            glBegin(GL_LINES);
-            glVertex3f(vertices[0], vertices[1], vertices[2]);
-            glVertex3f(vertices[3], vertices[4], vertices[5]);
-            glVertex3f(vertices[6], vertices[7], vertices[8]);
-            glEnd();*/
+        drawPolygon(5, -0.1, 0.0, prevX, prevY, "fill", lightGreen);
+        drawPolygon(5, 0.1, 0.0, prevX, prevY, "outline", darkGreen);
 
-            glColor3f(0, 0, 1);
-            //Draw outline
-            glBegin(GL_LINES);
-            glVertex3f(vertices[3], vertices[4], vertices[5]);
-            glVertex3f(vertices[6], vertices[7], vertices[8]);
-            glEnd();
+        drawPolygon(5, 0.6, 0.0, prevX, prevY, "fill", red);
+        drawPolygon(5, 0.8, 0.0, prevX, prevY, "outline", red);
 
-            glColor3f(1, 0, 0);
-            //Draw filled polygon
-            glBegin(GL_TRIANGLES);
-            glVertex3f(vertices[0], vertices[1], vertices[2]);
-            glVertex3f(vertices[3], vertices[4], vertices[5]);
-            glVertex3f(vertices[6], vertices[7], vertices[8]);
-            glEnd();
+        drawPolygon(5, -0.1, -0.8, prevX, prevY, "fill", red);
+        drawPolygon(5, 0.1, -0.8, prevX, prevY, "outline", red);
 
-            //glColor3f(0, 1, 0);
-            //glDrawArrays(GL_TRIANGLES, 0, 3);
-
-            prevX = newX;
-            prevY = newY;
-        }
-
-        /* no index buffer defined so glDrawArrays defines index start and count */
-        /* draws bounded buffer last called by glBindBuffer() */
+        /* no index buffer defined so glDrawArrays defines index start and count
+        draws bounded buffer last called by glBindBuffer() */
         //glColor3f(0, 1, 0);
         //glDrawArrays(GL_TRIANGLES, 0, 3);
 
@@ -160,4 +138,52 @@ int main(void)
 
     glfwTerminate();
     return 0;
+}
+
+void drawPolygon(int numVert, float tX, float tY, float prevX, float prevY, std::string type, float color[3]) {
+    for (int i = 0; i <= numVert; i++) {
+        angle = M_PI * 2.0f / numVert;
+
+        float newX = radius * sin(angle * i);
+        float newY = -radius * cos(angle * i);
+
+        /*glBegin(GL_TRIANGLES);
+        glVertex3f(0.0f, 0.0f, 0.0f);
+        glVertex3f(prevX, prevY, 0.0f);
+        glVertex3f(newX, newY, 0.0f);
+        glEnd();*/
+
+        vertices[0] = 0.0f;
+        vertices[1] = 0.0f;
+        vertices[2] = 0.0f;
+        vertices[3] = prevX;
+        vertices[4] = prevY;
+        vertices[5] = 0.0f;
+        vertices[6] = newX;
+        vertices[7] = newY;
+        vertices[8] = 0.0f;
+
+        translateVertices(tX, tY);
+
+        glColor3f(color[0], color[1], color[2]);
+
+        if (type == "outline") {
+            //Draw outline
+            glBegin(GL_LINES);
+            glVertex3f(vertices[3], vertices[4], vertices[5]);
+            glVertex3f(vertices[6], vertices[7], vertices[8]);
+            glEnd();
+        }
+        else if (type == "fill") {
+            //Draw filled polygon
+            glBegin(GL_TRIANGLES);
+            glVertex3f(vertices[0], vertices[1], vertices[2]);
+            glVertex3f(vertices[3], vertices[4], vertices[5]);
+            glVertex3f(vertices[6], vertices[7], vertices[8]);
+            glEnd();
+        }
+
+        prevX = newX;
+        prevY = newY;
+    }
 }
