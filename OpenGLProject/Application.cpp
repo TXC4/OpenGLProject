@@ -9,7 +9,7 @@ void drawPolygon(int, float, float, float, float, std::string, float[3]);
 
 int numOfVertices = 10;
 float angle = 0.0;
-float xPos = 0, yPos = 0, radius = 0.08f;
+float xPos = 0, yPos = 0, radius = 0.1f;
 float prevX = xPos;
 float prevY = yPos - radius;
 
@@ -24,6 +24,10 @@ float orange[3] = { 1,0.5,0 };
 float greenYellow[3] = { 0.5, 1, 0 };
 float lightGreen[3] = { 0.5,1,0.5 };
 float darkGreen[3] = { 0,0.5,0 };
+float pink[3] = { 1,0.43, 0.78 };
+float copper[3] = { 0.85, 0.53,0.1 };
+float orchid[3] = { 0.85, 0.54, 0.85 };
+float brass[3] = { 0.71, 0.65, 0.26 };
 
 float vertices[9]{
         0.0f, 0.0f, 0.0f,
@@ -100,26 +104,26 @@ int main(void)
         float prevX = xPos;
         float prevY = yPos - radius;
 
-        drawPolygon(5, -0.8, 0.8, prevX, prevY, "fill", red);
-        drawPolygon(5, -0.6, 0.8, prevX, prevY, "outline", blue);
+        drawPolygon(3, -0.7, 0.6, prevX, prevY, "fill", red);
+        drawPolygon(3, -0.5, 0.6, prevX, prevY, "outline", blue);
 
-        drawPolygon(5, -0.1, 0.8, prevX, prevY, "fill", green);
-        drawPolygon(5, 0.1, 0.8, prevX, prevY, "outline", yellow);
+        drawPolygon(4, -0.1, 0.6, prevX, prevY, "fill", green);
+        drawPolygon(4, 0.1, 0.6, prevX, prevY, "outline", yellow);
 
-        drawPolygon(5, 0.6, 0.8, prevX, prevY, "fill", cyan);
-        drawPolygon(5, 0.8, 0.8, prevX, prevY, "outline", orange);
+        drawPolygon(5, 0.5, 0.6, prevX, prevY, "fill", cyan);
+        drawPolygon(5, 0.7, 0.6, prevX, prevY, "outline", orange);
 
-        drawPolygon(5, -0.8, 0.0, prevX, prevY, "fill", purple);
-        drawPolygon(5, -0.6, 0.0, prevX, prevY, "outline", greenYellow);
+        drawPolygon(6, -0.7, 0.0, prevX, prevY, "fill", purple);
+        drawPolygon(6, -0.5, 0.0, prevX, prevY, "outline", greenYellow);
 
-        drawPolygon(5, -0.1, 0.0, prevX, prevY, "fill", lightGreen);
-        drawPolygon(5, 0.1, 0.0, prevX, prevY, "outline", darkGreen);
+        drawPolygon(7, -0.1, 0.0, prevX, prevY, "fill", lightGreen);
+        drawPolygon(7, 0.1, 0.0, prevX, prevY, "outline", copper);
 
-        drawPolygon(5, 0.6, 0.0, prevX, prevY, "fill", red);
-        drawPolygon(5, 0.8, 0.0, prevX, prevY, "outline", red);
+        drawPolygon(8, 0.5, 0.0, prevX, prevY, "fill", pink);
+        drawPolygon(8, 0.7, 0.0, prevX, prevY, "outline", darkGreen);
 
-        drawPolygon(5, -0.1, -0.8, prevX, prevY, "fill", red);
-        drawPolygon(5, 0.1, -0.8, prevX, prevY, "outline", red);
+        drawPolygon(1000, -0.1, -0.6, prevX, prevY, "fill", orchid);
+        drawPolygon(1000, 0.1, -0.6, prevX, prevY, "outline", brass);
 
         /* no index buffer defined so glDrawArrays defines index start and count
         draws bounded buffer last called by glBindBuffer() */
